@@ -31,8 +31,11 @@ jobs:
     - name: Build
       run: npm run build -- --configuration=github-pages
       
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: ./dist/student-life
+        
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v4
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      with:
-        path: ./dist/student-life 
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' 
